@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { CalculatorModel } from './CalculatorModel';
 
 @Component({
-	selector : 'calculator',
-	templateUrl : 'calculator.component.html'
+	selector : 'new-calculator',
+	templateUrl : 'newCalculator.template.html'
 })
-export class CalculatorComponent{
-	
+export class NewCalculatorComponent{
 	model : CalculatorModel = new CalculatorModel();
 
+	
 }
