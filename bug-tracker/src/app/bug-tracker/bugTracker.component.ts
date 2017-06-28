@@ -13,6 +13,8 @@ export class BugTrackerComponent{
 
 	bugName : string = '';
 	
+	sortBugBy : string = '';
+	
 	//bugOperations : BugOperationsService = new BugOperationsService();
 
 	constructor(private bugOperations : BugOperationsService){

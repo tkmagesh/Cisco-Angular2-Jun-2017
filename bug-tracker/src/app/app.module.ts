@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { BugTrackerComponent } from './bug-tracker/bugTracker.component';
 import { BugOperationsService } from './bug-tracker/services/BugOperations.service';
 import { TrimTextPipe } from './bug-tracker/pipes/trimText.pipe';
+import { OrderByPipe } from './bug-tracker/pipes/OrderBy.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     BugTrackerComponent,
-    TrimTextPipe
+    TrimTextPipe,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,
