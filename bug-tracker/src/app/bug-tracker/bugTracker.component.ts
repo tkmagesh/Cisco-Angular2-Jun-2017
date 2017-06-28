@@ -13,8 +13,12 @@ export class BugTrackerComponent{
 
 	bugName : string = '';
 	
-	bugOperations : BugOperationsService = new BugOperationsService();
-	
+	//bugOperations : BugOperationsService = new BugOperationsService();
+
+	constructor(private bugOperations : BugOperationsService){
+
+	}
+
 	onAddNewClick() : void {
 		const newBug = this.bugOperations.createNew(this.bugName);
 		this.bugs.push(newBug);
@@ -31,7 +35,7 @@ export class BugTrackerComponent{
 	}
 
 	getClosedCount() : number {
-		console.log('getClosedCount triggered');
+		//console.log('getClosedCount triggered');
 		let result : number = 0;
 		for(let index = 0; index < this.bugs.length; index++)
 			if (this.bugs[index].isClosed)
