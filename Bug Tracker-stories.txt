@@ -1,0 +1,15 @@
+Bug Tracker
+-----------
+1. Add a new bug
+2. List the bugs
+3. Toggle the 'closed' status of a bug
+4. Remove 'closed' bugs
+5. Display stats (# of closed bugs / total # of bugs)
+6. Improvise bug display
+7. Sort the bugs
+8. Persist the bugs in localStorage
+9. Display 'createdAt'
+10. Persist the bugs in the server
+11. Make the bugs accessible through unique urls (routing)
+12. Add 'severity' to the bugs
+13. Improve the bug 'state' (Angular forms)
