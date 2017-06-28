@@ -8,6 +8,21 @@ Bug Tracker
 6. Improvise bug display
 7. Sort the bugs
 8. Persist the bugs in localStorage
+	window.localStorage
+	===================
+		* key/value store
+		* both key & value must be strings
+		* SOP
+		* use JSON.stringify & JSON.parse for serialization and de-serialization
+		* APIs
+		------
+			- setItem(key, value)
+			- getItem(key) returns value
+			- removeItem(key)
+			- clear()
+			- key(index) return key at index
+			- length
+
 9. Display 'createdAt'
 10. Persist the bugs in the server
 11. Make the bugs accessible through unique urls (routing)
