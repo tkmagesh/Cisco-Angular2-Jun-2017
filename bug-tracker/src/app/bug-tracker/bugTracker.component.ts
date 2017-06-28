@@ -14,7 +14,7 @@ export class BugTrackerComponent{
 	bugName : string = '';
 	
 	sortBugBy : string = '';
-	
+
 	//bugOperations : BugOperationsService = new BugOperationsService();
 
 	constructor(private bugOperations : BugOperationsService){
@@ -23,21 +23,20 @@ export class BugTrackerComponent{
 
 	onAddNewClick() : void {
 		const newBug = this.bugOperations.createNew(this.bugName);
-		this.bugs.push(newBug);
+		this.bugs = [...this.bugs, newBug];
 	}
 
 	onBugClick(bug) : void {
-		this.bugOperations.toggle(bug);
+		let toggledBug = this.bugOperations.toggle(bug);
+		this.bugs = this.bugs.map(bug => bug.id === toggledBug.id ? toggledBug : bug);
 	}
 	
 	onRemoveClosedClick() : void {
-		for(let index = this.bugs.length-1; index >=0; index--)
-			if (this.bugs[index].isClosed)
-				this.bugs.splice(index, 1);
+		this.bugs = this.bugs.filter(bug => !bug.isClosed);
 	}
 
 	getClosedCount() : number {
-		//console.log('getClosedCount triggered');
+		console.log('getClosedCount triggered');
 		let result : number = 0;
 		for(let index = 0; index < this.bugs.length; index++)
 			if (this.bugs[index].isClosed)
