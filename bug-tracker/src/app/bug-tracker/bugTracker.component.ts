@@ -18,8 +18,8 @@ export class BugTrackerComponent{
 		this.bugs.push(newBug);
 	}
 
-	onBugClick(){
-		console.log('a bug is being clicked');
+	onBugClick(bug){
+		bug.isClosed = !bug.isClosed;
 	}
 }
 
