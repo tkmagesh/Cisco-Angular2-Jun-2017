@@ -1,7 +1,7 @@
 <h1>Bug Tracker</h1>
 <hr>
 <section class="stats">
-	<span class="closed">2</span>
+	<span class="closed">{{getClosedCount()}}</span>
 	<span> / </span>
 	<span>{{bugs.length}}</span>
 </section>
@@ -13,8 +13,8 @@
 </section>
 <section class="edit">
 	<label for="">Bug Name :</label>
-	<input type="text" #txtBugName>
-	<input type="button" value="Add New" (click)="onAddNewClick(txtBugName.value)">
+	<input type="text" [(ngModel)]="bugName">
+	<input type="button" value="Add New" (click)="onAddNewClick()">
 </section>
 <section class="list">
 	<ol>
@@ -24,5 +24,5 @@
 			<i>{{bug.isClosed}}</i>
 		</li>
 	</ol>
-	<input type="button" value="Remove Closed">
+	<input type="button" value="Remove Closed" (click)="onRemoveClosedClick()">
 </section>
