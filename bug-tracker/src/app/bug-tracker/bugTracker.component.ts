@@ -11,7 +11,7 @@ export class BugTrackerComponent{
 
 	bugs : Array<IBug> = [];
 
-	bugName : string = '';
+	
 	
 	sortBugBy : string = '';
 
@@ -26,8 +26,13 @@ export class BugTrackerComponent{
 		this.bugs = this.bugStorage.getAll();
 	}
 
-	onAddNewClick() : void {
+	/*onAddNewClick() : void {
 		const newBug = this.bugStorage.addNew(this.bugName);
+		this.bugs = [...this.bugs, newBug];
+	}*/
+
+	newBugCreated(bugName:string){
+		const newBug = this.bugStorage.addNew(bugName);
 		this.bugs = [...this.bugs, newBug];
 	}
 

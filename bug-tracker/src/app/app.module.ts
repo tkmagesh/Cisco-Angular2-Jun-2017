@@ -9,6 +9,7 @@ import { OrderByPipe } from './bug-tracker/pipes/OrderBy.pipe';
 import { ClosedCountPipe } from './bug-tracker/pipes/closedCount.pipe';
 import { BugStorageService } from './bug-tracker/services/BugStorage.service';
 import { ElapsedPipe } from './bug-tracker/pipes/elapsed.pipe';
+import { BugEditComponent } from './bug-tracker/bug-edit/bugEdit.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ElapsedPipe } from './bug-tracker/pipes/elapsed.pipe';
     TrimTextPipe,
     OrderByPipe,
     ClosedCountPipe,
-    ElapsedPipe
+    ElapsedPipe,
+    BugEditComponent
   ],
   imports: [
     BrowserModule,
