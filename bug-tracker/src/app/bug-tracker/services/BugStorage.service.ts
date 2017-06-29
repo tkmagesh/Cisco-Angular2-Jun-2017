@@ -10,10 +10,11 @@ export class BugStorageService{
 	public onChange : EventEmitter<void> = new EventEmitter<void>();
 
 	constructor(private bugOperations : BugOperationsService){
-		window.onstorage = this.onStorageChange.bind(this);
+		//window.onstorage = this.onStorageChange.bind(this);
+		//window.onstorage = (_) => this.onStorageChange();
+		window.onstorage = (_) => this.onChange.emit();
 	}
 	onStorageChange(){
-		console.log(this);
 		this.onChange.emit();
 	}
 	getAll() : Array<IBug>{
