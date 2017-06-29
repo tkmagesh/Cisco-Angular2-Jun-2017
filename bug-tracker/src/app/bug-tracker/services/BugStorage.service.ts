@@ -1,13 +1,20 @@
 import { BugOperationsService } from './BugOperations.service';
 import { IBug } from '../models/IBug';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
 export class BugStorageService{
 	private storage : Storage = window.localStorage;
 	private currentBugId : number = 0;
-	constructor(private bugOperations : BugOperationsService){
 
+	public onChange : EventEmitter<void> = new EventEmitter<void>();
+
+	constructor(private bugOperations : BugOperationsService){
+		window.onstorage = this.onStorageChange.bind(this);
+	}
+	onStorageChange(){
+		console.log(this);
+		this.onChange.emit();
 	}
 	getAll() : Array<IBug>{
 		let result : Array<IBug> = [];

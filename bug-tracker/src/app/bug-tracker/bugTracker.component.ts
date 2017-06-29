@@ -18,6 +18,11 @@ export class BugTrackerComponent{
 	//bugOperations : BugOperationsService = new BugOperationsService();
 
 	constructor(private bugStorage : BugStorageService){
+		this.loadBugs();		
+		this.bugStorage.onChange.subscribe(() => this.loadBugs());
+	}
+
+	private loadBugs(){
 		this.bugs = this.bugStorage.getAll();
 	}
 
