@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { UtilsModule } from './utils/utils.module';
 
@@ -8,6 +9,7 @@ import { UtilsModule } from './utils/utils.module';
 import { AppComponent } from './app.component';
 import { BugTrackerComponent } from './bug-tracker/bugTracker.component';
 import { BugOperationsService } from './bug-tracker/services/BugOperations.service';
+import { BugServerService } from './bug-tracker/services/BugServer.service';
 import { ClosedCountPipe } from './bug-tracker/pipes/closedCount.pipe';
 import { BugStorageService } from './bug-tracker/services/BugStorage.service';
 import { BugEditComponent } from './bug-tracker/bug-edit/bugEdit.component';
@@ -24,9 +26,10 @@ import { BugEditComponent } from './bug-tracker/bug-edit/bugEdit.component';
   imports: [
     BrowserModule,
     FormsModule,
-    UtilsModule
+    UtilsModule,
+    HttpModule
   ],
-  providers: [BugOperationsService, BugStorageService],
+  providers: [BugOperationsService, BugStorageService, BugServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,58 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IBug } from './models/IBug';
-import { BugStorageService } from './services/BugStorage.service';
+import { Observable } from 'rxjs/Observable';
+import { BugServerService } from './services/BugServer.service';
+
 
 @Component({
 	selector : 'bug-tracker',
 	templateUrl : 'bugTracker.component.html',
 	styleUrls : ['bugTracker.component.css']
 })
-export class BugTrackerComponent{
+export class BugTrackerComponent implements OnInit{
 
 	bugs : Array<IBug> = [];
 
-	
-	
 	sortBugBy : string = '';
 
-	//bugOperations : BugOperationsService = new BugOperationsService();
-
-	constructor(private bugStorage : BugStorageService){
-		this.loadBugs();		
-		this.bugStorage.onChange.subscribe(() => this.loadBugs());
+	constructor(private bugServerService : BugServerService){
+		
 	}
 
-	private loadBugs(){
-		this.bugs = this.bugStorage.getAll();
+	ngOnInit(){
+		this.bugServerService
+			.getAll()
+			.subscribe(bugs => this.bugs = bugs);
+		
 	}
-
-	/*onAddNewClick() : void {
-		const newBug = this.bugStorage.addNew(this.bugName);
-		this.bugs = [...this.bugs, newBug];
-	}*/
-
 	newBugCreated(bugName:string){
-		const newBug = this.bugStorage.addNew(bugName);
-		this.bugs = [...this.bugs, newBug];
+		this.bugServerService
+			.addNew(bugName)
+			.subscribe(newBug => this.bugs = [...this.bugs, newBug]);
 	}
 
 	onBugClick(bug) : void {
-		let toggledBug = this.bugStorage.toggle(bug);
-		this.bugs = this.bugs.map(bug => bug.id === toggledBug.id ? toggledBug : bug);
+		this.bugServerService
+			.toggle(bug)
+			.subscribe(updatedBug => this.bugs = this.bugs.map(bug => bug.id === updatedBug.id ? updatedBug : bug));
 	}
 	
 	onRemoveClosedClick() : void {
-		/*let bugsToRemove = this.bugs.filter(bug => bug.isClosed);
-		bugsToRemove.forEach(bug => this.bugStorage.remove(bug));
-		this.bugs = this.bugs.filter(bug => !bug.isClosed);*/
-
-		this.bugs = this.bugs.reduce((result, bug) => {
-			if (bug.isClosed){
-				this.bugStorage.remove(bug);
-				return result;
-			}
-			return [...result, bug];
-		}, []);
+		
 	}
 }
 
