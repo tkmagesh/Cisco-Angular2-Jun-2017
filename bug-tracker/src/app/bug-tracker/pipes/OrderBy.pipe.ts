@@ -13,7 +13,6 @@ export class OrderByPipe implements PipeTransform {
 			for(let j = i + 1; j < data.length; j++)
 				if (comparer(data[i], data[j]) > 0)
 					[data[i], data[j]] = [data[j], data[i]];
-		console.table(data);
 		return data;
 	}
 }
@@ -28,7 +27,6 @@ function getDescendingComparer(comparer : IComparer) : IComparer{
 	}
 }
 function getComparer(attrName : string) : IComparer {
-	console.log('comparer for ', attrName);
 	return function(item1 : any, item2 : any) : number {
 		if (item1[attrName] < item2[attrName]) return -1;
 		if (item1[attrName] > item2[attrName]) return 1;

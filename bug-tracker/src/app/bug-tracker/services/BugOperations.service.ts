@@ -1,13 +1,12 @@
 import { IBug } from '../models/IBug';
 
 export class BugOperationsService{
-	private id : number = 0;
-
-	createNew(bugName : string) : IBug{
+	createNew(id : number, bugName : string) : IBug{
 		const newBug = {
-			id : ++this.id,
+			id : id,
 			name : bugName,
-			isClosed : false
+			isClosed : false,
+			createdAt : new Date()
 		};
 		return newBug;
 	}
@@ -15,7 +14,8 @@ export class BugOperationsService{
 		return {
 			id : bug.id,
 			name : bug.name,
-			isClosed : !bug.isClosed
+			isClosed : !bug.isClosed,
+			createdAt : bug.createdAt
 		}
 	}
 }
